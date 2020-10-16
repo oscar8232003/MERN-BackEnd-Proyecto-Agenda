@@ -1,0 +1,24 @@
+{
+  "name": "proyecto-agenda-Back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Oscar Valenzuela",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jwt-simple": "^0.5.6",
+    "mariadb": "^2.4.2",
+    "moment": "^2.29.1",
+    "nodemailer": "^6.4.13",
+    "nodemon": "^2.0.4",
+    "query-string": "^6.13.5",
+    "sequelize": "^6.3.5"
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
+  }
+}
