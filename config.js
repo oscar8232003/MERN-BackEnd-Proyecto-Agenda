@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "variables.env" });
 
+exports.PROYECTNAME = process.env.PROYECTNAME;
 exports.API_VERSION = process.env.API_VERSION;
 exports.IP_SERVER = process.env.IP_SERVER || "localhost";
 exports.PORT = process.env.PORT || 5000;

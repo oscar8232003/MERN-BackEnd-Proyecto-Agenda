@@ -4,26 +4,41 @@ const route = express.Router();
 //Controller
 const recordatoriosController = require("../controller/recordatoriosController");
 
-route.get("/bulk", recordatoriosController.bulkRecordatorios);
+route.get("/bulk-recordatorios/:id", recordatoriosController.bulkRecordatorios);
 
-route.post(
-  "/get-recordatorios-inicio",
+route.get(
+  "/recordatorios-inicio",
   recordatoriosController.getRecordatoriosInicio
 );
 
-route.post(
-  "/count-recordatorios-info",
+route.get(
+  "/recordatorios-info",
   recordatoriosController.countRecordatoriosInfo
 );
 
-route.post(
-  "/get-total-recordatorios",
+route.get(
+  "/recordatorios-list",
   recordatoriosController.getTotalRecordatoriosList
 );
 
-route.post(
+route.get(
   "/recordatorios-search",
   recordatoriosController.getSearchRecordatorios
 );
+
+route.post(
+  '/add',
+  recordatoriosController.addRecordatorio
+)
+
+route.delete(
+  '/delete/:idRecordatorio',
+  recordatoriosController.deleteRecordatorio
+)
+
+route.put(
+  '/update/:idRecordatorio',
+  recordatoriosController.updateRecordatorio
+)
 
 module.exports = route;

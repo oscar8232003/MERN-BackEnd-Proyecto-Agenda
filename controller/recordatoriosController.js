@@ -1,4 +1,5 @@
 const recordatoriosModel = require("../models/recordatoriosModel");
+const userModel = require("../models/userModel");
 const moment = require("moment");
 const { Op } = require("sequelize");
 
@@ -64,183 +65,193 @@ const getRecordatorios = (
 };
 
 exports.bulkRecordatorios = async (req, res) => {
-  const today = moment(new Date()).add(5, "days").format("YYYY-MM-DD");
-  const bulk = await recordatoriosModel.bulkCreate([
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "normal",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "veryImportant",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-    {
-      title: "recordatorio",
-      importance: "important",
-      date: today,
-      active: 1,
-      idUser: 1,
-    },
-  ]);
+  const { id } = req.params;
 
-  res.status(200).send({ bulk: true });
+  const findUser = await userModel.findByPk(id);
+  if (findUser) {
+    const today = moment(new Date()).add(5, "days").format("YYYY-MM-DD");
+    const bulk = await recordatoriosModel.bulkCreate([
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "normal",
+        date: today,
+        active: 0,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 0,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 0,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "veryImportant",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: "2020-10-15",
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: "2020-10-15",
+        active: 1,
+        idUser: id,
+      },
+      {
+        title: "recordatorio",
+        importance: "important",
+        date: today,
+        active: 1,
+        idUser: id,
+      },
+    ]);
+
+    res.status(200).send({ bulk: true });
+  } else {
+    res.status(400).send({
+      msg: `No se encontro al usuario con la id ${id}`,
+    });
+  }
 };
 
 exports.getRecordatoriosInicio = async (req, res) => {
-  const { id } = req.body;
+  //Validacion del token
+  const id = req.headers.token;
   let variables = 5;
 
   //getRecordatorios(id, importance = null, active= true, limit = null)
@@ -253,13 +264,14 @@ exports.getRecordatoriosInicio = async (req, res) => {
 
   const normal = await getRecordatorios(id, "normal", true, variables);
 
-  res
-    .status(200)
-    .send({ veryImportant, importantAndNormal: [...important, ...normal] });
+  res.status(200).send({
+    veryImportant,
+    importantAndNormal: [...important, ...normal],
+  });
 };
 
 exports.countRecordatoriosInfo = async (req, res) => {
-  const { id } = req.body;
+  const id = req.headers.token;
 
   const getTotalRecordatorios = await recordatoriosModel.count({
     where: {
@@ -313,7 +325,7 @@ exports.countRecordatoriosInfo = async (req, res) => {
 };
 
 exports.getTotalRecordatoriosList = async (req, res) => {
-  const { id } = req.body;
+  const id = req.headers.token;
 
   const totalRecordatoriosVeryImportant = await getRecordatorios(
     id,
@@ -346,7 +358,8 @@ exports.getTotalRecordatoriosList = async (req, res) => {
 };
 
 exports.getSearchRecordatorios = async (req, res) => {
-  const { id, search } = req.body;
+  const id = req.headers.token;
+  const { search } = req.query;
 
   const recordatoriosSearch = await recordatoriosModel.findAll({
     where: {
@@ -368,4 +381,75 @@ exports.getSearchRecordatorios = async (req, res) => {
   });
 
   res.status(200).send({ recordatoriosSearch });
+};
+
+exports.addRecordatorio = async (req, res) => {
+  const id = req.headers.token;
+  const { recordatorio } = req.body;
+  const newRecordatorio = {
+    ...recordatorio,
+    idUser: id,
+  };
+
+  try {
+    await recordatoriosModel.create(newRecordatorio);
+    res.status(201).send({ create: true });
+  } catch (error) {
+    res.status(400).send({ msg: error.errors[0].message });
+  }
+};
+
+exports.deleteRecordatorio = async (req, res) => {
+  const id = req.headers.token;
+  const { idRecordatorio } = req.params;
+
+  const findRecordatorio = await recordatoriosModel.findByPk(idRecordatorio);
+
+  if (findRecordatorio) {
+    if (findRecordatorio.idUser == id) {
+      const recordatorioDeleted = await recordatoriosModel.destroy({
+        where: { id: idRecordatorio },
+      });
+      recordatorioDeleted
+        ? res.status(200).send({ delete: true })
+        : res.status(500).send({ msg: "Lo siento, intentelo mas tarde" });
+    } else {
+      res.status(400).send({
+        msg: "Lo siento, no tiene permiso para eliminar ese recordatorio",
+      });
+    }
+  } else {
+    res.status(400).send({ msg: "Lo siento, el recordatorio no existe" });
+  }
+};
+
+exports.updateRecordatorio = async (req, res) => {
+  const id = req.headers.token;
+  const { idRecordatorio } = req.params;
+  const { recordatorio } = req.body;
+
+  const findRecordatorio = await recordatoriosModel.findByPk(idRecordatorio);
+
+  if (findRecordatorio) {
+    if (findRecordatorio.idUser == id) {
+      const recordatorioTemp = { ...findRecordatorio, ...recordatorio };
+      try {
+        const recordatorioUpdated = await recordatoriosModel.update(
+          { ...recordatorioTemp },
+          { where: { id: idRecordatorio } }
+        );
+        recordatorioUpdated
+          ? res.status(200).send({ updated: true })
+          : res.status(500).send({ msg: "Lo siento, intentelo mas tarde" });
+      } catch (error) {
+        res.status(400).send({ msg: errors.errors[0].message });
+      }
+    } else {
+      res.status(400).send({
+        msg: "Lo siento, no tiene permiso para actualizar este recordatorio",
+      });
+    }
+  } else {
+    res.status(400).send({ msg: "Lo siento, el recordatorio no existe" });
+  }
 };

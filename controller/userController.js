@@ -24,11 +24,10 @@ exports.findUser = async (req, res) => {
 exports.createUser = async (req, res) => {
   const newUser = {
     name: "oscar",
-    lastname: "Valenzuela2",
+    lastname: "Valenzuela",
     email: "oavr.18@gmail.com",
     password: "123456789",
     active: true,
-    token: "",
   };
 
   try {

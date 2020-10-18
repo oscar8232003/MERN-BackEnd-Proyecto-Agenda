@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("./configs/dbConfig");
-const { PORT } = require("./config");
+const { PORT, PROYECTNAME, API_VERSION } = require("./config");
 
 //Rutas
 const userRoutes = require("./routes/userRoutes");
@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Rutas
-app.use("/", userRoutes);
-app.use("/auth", authRoutes);
-app.use("/recordatorios", recordatoriosRoutes);
+app.use(`/${PROYECTNAME}/${API_VERSION}/`, userRoutes);
+app.use(`/${PROYECTNAME}/${API_VERSION}/auth`, authRoutes);
+app.use(`/${PROYECTNAME}/${API_VERSION}/recordatorios`, recordatoriosRoutes);
 
 //Sincronizar BD
 //{ force: true }
